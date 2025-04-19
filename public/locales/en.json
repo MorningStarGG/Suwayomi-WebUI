@@ -1545,5 +1545,72 @@
       }
     },
     "title": "Updates"
+  },
+  "anilist": {
+    "match": {
+      "button": "Match AniList",
+      "button_edit": "Edit AniList Match",
+      "apply": "Set AniList Match",
+      "update": "Update AniList Match",
+      "success": "AniList match set successfully",
+      "error": "Failed to set AniList match",
+      "loading_existing": "Loading existing AniList match",
+      "english_title": "English",
+      "romaji_title": "Romaji",
+      "native_title": "Native"
+    },
+    "settings": {
+      "title": "AniList Metadata Integration",
+      "explanation": "Enhance your manga metadata with AniList",
+      "explanation_detail": "AniList integration provides additional metadata for your manga in the ComicInfo.xml files, which improves compatibility with readers and media managers.",
+      "enable": {
+        "label": "Enable AniList Integration",
+        "description": "Use AniList as a metadata source for enhanced ComicInfo.xml files"
+      },
+      "content_type": {
+        "label": "Content Type",
+        "description": "Set the type of content in your library for appropriate metadata matching",
+        "options": {
+          "manga": "Manga (Japanese)",
+          "manhwa": "Manhwa (Korean)",
+          "manhua": "Manhua (Chinese)",
+          "webtoon": "Webtoon",
+          "comic": "Comic (Western)"
+        }
+      },
+      "uncertain_action": {
+        "label": "Uncertain Match Handling",
+        "description": "Decide how to handle cases when AniList match confidence is low",
+        "options": {
+          "skip": "Skip uncertain matches",
+          "use": "Use uncertain matches anyway"
+        }
+      }
+    }
+  },
+  "format": {
+    "settings": {
+      "title": "File and Folder Format Settings",
+      "explanation": "Customize folder and file naming patterns",
+      "explanation_detail": "Use variables surrounded by curly braces to customize naming patterns. Hover over the info icon to see available variables.",
+      "manga_folder_format": {
+        "label": {
+          "title": "Manga Folder Format",
+          "description": "Format pattern for manga folders. Available variables: {title} - Manga title, {source} - Source name"
+        }
+      },
+      "chapter_folder_format": {
+        "label": {
+          "title": "Chapter Folder Format",
+          "description": "Format pattern for chapter folders. Available variables: {title} - Chapter title, {number} - Chapter number, {number_padded} - Chapter number with 2-digit padding, {number_padded3} - Chapter number with 3-digit padding, {chapter} - Chapter name, {volume} - Volume number, {volume_prefix} - Volume prefix (e.g., \"Vol.1 \"), {name} - Chapter name, {title_suffix} - Title suffix (e.g., \": The Battle\"), {scanlator} - Scanlator name"
+        }
+      },
+      "cbz_file_format": {
+        "label": {
+          "title": "CBZ File Format",
+          "description": "Format pattern for CBZ archives. Available variables: {manga_title} - Manga title, plus all chapter variables: {title}, {number}, {number_padded}, {number_padded3}, {chapter}, {volume}, {volume_prefix}, {name}, {title_suffix}, {scanlator}"
+        }
+      }
+    }
   }
 }
