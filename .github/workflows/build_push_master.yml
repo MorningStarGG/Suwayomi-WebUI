@@ -56,7 +56,7 @@ jobs:
       - name: Checkout preview branch
         uses: actions/checkout@v4
         with:
-          repository: "Suwayomi/Suwayomi-WebUI-preview"
+          repository: "MorningStarGG/Suwayomi-WebUI-preview"
           ref: main
           path: preview
           token: ${{ secrets.BUILD_PREVIEW_TOKEN }}
@@ -81,17 +81,9 @@ jobs:
         with:
           token: ${{ secrets.BUILD_PREVIEW_TOKEN }}
           artifacts: "master/buildZip/*"
-          owner: "Suwayomi"
+          owner: "MorningStarGG"
           repo: "Suwayomi-WebUI-preview"
           tag: ${{ steps.GenTagName.outputs.value }}
-
-      - name: Checkout github pages repo
-        uses: actions/checkout@v4
-        with:
-          repository: "Suwayomi-WebUI-preview/suwayomi-webui-preview.github.io"
-          ref: main
-          path: gh-pages
-          token: ${{ secrets.DEPLOY_PREVIEW_TOKEN }}
 
       - name: Deploy github pages
         run: |
