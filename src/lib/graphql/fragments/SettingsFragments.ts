@@ -38,6 +38,16 @@ export const SERVER_SETTINGS = gql`
         autoDownloadNewChaptersLimit
         autoDownloadIgnoreReUploads
 
+        # Folder/File format fields
+        mangaFolderFormat
+        chapterFolderFormat
+        cbzFileFormat
+
+        # anilist integration
+        useAnilist
+        contentType
+        anilistDefaultUncertainAction
+
         # extensions
         extensionRepos
 

@@ -18,6 +18,13 @@ export const SERVER_SETTINGS_METADATA_DEFAULT: MetadataServerSettings = {
     deleteChaptersWithBookmark: false,
     downloadAheadLimit: 0,
 
+    mangaFolderFormat: '{source}/{title}',
+    chapterFolderFormat: '{scanlator}_{name}',
+    cbzFileFormat: '{manga_title} - [{scanlator}] {name}',
+    useAnilist: false,
+    contentType: 'manga',
+    anilistDefaultUncertainAction: 'skip',
+
     // library
     showAddToLibraryCategorySelectDialog: true,
     ignoreFilters: false,
