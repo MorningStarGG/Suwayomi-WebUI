@@ -84,16 +84,3 @@ jobs:
           owner: "MorningStarGG"
           repo: "Suwayomi-WebUI-preview"
           tag: ${{ steps.GenTagName.outputs.value }}
-
-      - name: Deploy github pages
-        run: |
-          TAG="${{ steps.GenTagName.outputs.value }}"
-          rm -rf gh-pages/*
-          cp -r master/build/* gh-pages
-          cd gh-pages
-          cp index.html 404.html
-          git add -A
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git commit -m "$TAG"
-          git push origin main
