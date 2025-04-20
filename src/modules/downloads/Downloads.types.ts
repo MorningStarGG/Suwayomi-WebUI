@@ -11,11 +11,4 @@ export type MetadataDownloadSettings = {
     deleteChaptersWhileReading: number;
     deleteChaptersWithBookmark: boolean;
     downloadAheadLimit: number;
-
-    mangaFolderFormat: string;
-    chapterFolderFormat: string;
-    cbzFileFormat: string;
-    useAnilist: boolean;
-    contentType: string;
-    anilistDefaultUncertainAction: string;
 };
