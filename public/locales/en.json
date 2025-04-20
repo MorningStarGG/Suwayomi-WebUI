@@ -1567,17 +1567,6 @@
         "label": "Enable AniList Integration",
         "description": "Use AniList as a metadata source for enhanced ComicInfo.xml files"
       },
-      "content_type": {
-        "label": "Content Type",
-        "description": "Set the type of content in your library for appropriate metadata matching",
-        "options": {
-          "manga": "Manga (Japanese)",
-          "manhwa": "Manhwa (Korean)",
-          "manhua": "Manhua (Chinese)",
-          "webtoon": "Webtoon",
-          "comic": "Comic (Western)"
-        }
-      },
       "uncertain_action": {
         "label": "Uncertain Match Handling",
         "description": "Decide how to handle cases when AniList match confidence is low",

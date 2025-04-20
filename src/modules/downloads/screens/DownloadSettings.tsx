@@ -13,14 +13,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Switch from '@mui/material/Switch';
 import ListSubheader from '@mui/material/ListSubheader';
-import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
-import Paper from '@mui/material/Paper';
 
 import { TextSetting } from '@/modules/core/components/settings/text/TextSetting.tsx';
 import { requestManager } from '@/lib/requests/RequestManager.ts';
@@ -42,14 +38,13 @@ import { MetadataDownloadSettings } from '@/modules/downloads/Downloads.types.ts
 import { ServerSettings } from '@/modules/settings/Settings.types.ts';
 import { getErrorMessage } from '@/lib/HelperFunctions.ts';
 import { useNavBarContext } from '@/modules/navigation-bar/contexts/NavbarContext.tsx';
-import { ContentType } from '@/modules/metadata/MetadataSettings.types.ts';
 import { SelectSetting } from '@/modules/core/components/settings/SelectSetting.tsx';
 
 // Format variables info
 const FORMAT_VARIABLES_INFO = {
     mangaFolderFormat: [
         { variable: '{title}', description: 'Manga title' },
-        { variable: '{source}', description: 'Source name' }
+        { variable: '{source}', description: 'Source name' },
     ],
     chapterFolderFormat: [
         { variable: '{title}', description: 'Chapter title' },
@@ -61,7 +56,7 @@ const FORMAT_VARIABLES_INFO = {
         { variable: '{volume_prefix}', description: 'Volume prefix (e.g., "Vol.1 ")' },
         { variable: '{name}', description: 'Chapter name' },
         { variable: '{title_suffix}', description: 'Title suffix (e.g., ": The Battle")' },
-        { variable: '{scanlator}', description: 'Scanlator name' }
+        { variable: '{scanlator}', description: 'Scanlator name' },
     ],
     cbzFileFormat: [
         { variable: '{manga_title}', description: 'Manga title' },
@@ -74,11 +69,9 @@ const FORMAT_VARIABLES_INFO = {
         { variable: '{volume_prefix}', description: 'Volume prefix (e.g., "Vol.1 ")' },
         { variable: '{name}', description: 'Chapter name' },
         { variable: '{title_suffix}', description: 'Title suffix (e.g., ": The Battle")' },
-        { variable: '{scanlator}', description: 'Scanlator name' }
-    ]
+        { variable: '{scanlator}', description: 'Scanlator name' },
+    ],
 };
-
-const CONTENT_TYPES: ContentType[] = ['manga', 'manhwa', 'manhua', 'webtoon', 'comic'];
 
 type DownloadSettingsType = Pick<
     ServerSettings,
@@ -92,7 +85,6 @@ type DownloadSettingsType = Pick<
     | 'chapterFolderFormat'
     | 'cbzFileFormat'
     | 'useAnilist'
-    | 'contentType'
     | 'anilistDefaultUncertainAction'
 >;
 
@@ -107,17 +99,8 @@ const extractDownloadSettings = (settings: ServerSettings): DownloadSettingsType
     chapterFolderFormat: settings.chapterFolderFormat,
     cbzFileFormat: settings.cbzFileFormat,
     useAnilist: settings.useAnilist,
-    contentType: settings.contentType as ContentType,
     anilistDefaultUncertainAction: settings.anilistDefaultUncertainAction,
 });
-
-// Helper function to show variable tooltips
-const getVariablesHelpText = (setting: keyof typeof FORMAT_VARIABLES_INFO) => {
-    const variables = FORMAT_VARIABLES_INFO[setting];
-    if (!variables || variables.length === 0) return '';
-
-    return variables.map(v => `${v.variable} - ${v.description}`).join('\n');
-};
 
 // Component to display format variables
 const FormatVariablesList = ({ formatType }: { formatType: keyof typeof FORMAT_VARIABLES_INFO }) => {
@@ -137,7 +120,7 @@ const FormatVariablesList = ({ formatType }: { formatType: keyof typeof FORMAT_V
                             variant="outlined"
                             sx={{
                                 fontSize: '0.75rem',
-                                '&:hover': { backgroundColor: 'action.hover' }
+                                '&:hover': { backgroundColor: 'action.hover' },
                             }}
                         />
                     </Tooltip>
@@ -261,13 +244,6 @@ export const DownloadSettings = () => {
                         value={downloadSettings?.mangaFolderFormat || '{source}/{title}'}
                         settingDescription={downloadSettings?.mangaFolderFormat || '{source}/{title}'}
                         handleChange={(format) => updateSetting('mangaFolderFormat', format)}
-                        secondaryAction={
-                            <Tooltip title={getVariablesHelpText('mangaFolderFormat')} arrow>
-                                <IconButton edge="end">
-                                    <InfoIcon />
-                                </IconButton>
-                            </Tooltip>
-                        }
                     />
                     <FormatVariablesList formatType="mangaFolderFormat" />
                 </Box>
@@ -279,13 +255,6 @@ export const DownloadSettings = () => {
                         value={downloadSettings?.chapterFolderFormat || '{scanlator}_{name}'}
                         settingDescription={downloadSettings?.chapterFolderFormat || '{scanlator}_{name}'}
                         handleChange={(format) => updateSetting('chapterFolderFormat', format)}
-                        secondaryAction={
-                            <Tooltip title={getVariablesHelpText('chapterFolderFormat')} arrow>
-                                <IconButton edge="end">
-                                    <InfoIcon />
-                                </IconButton>
-                            </Tooltip>
-                        }
                     />
                     <FormatVariablesList formatType="chapterFolderFormat" />
                 </Box>
@@ -297,13 +266,6 @@ export const DownloadSettings = () => {
                         value={downloadSettings?.cbzFileFormat || '{manga_title} - [{scanlator}] {name}'}
                         settingDescription={downloadSettings?.cbzFileFormat || '{manga_title} - [{scanlator}] {name}'}
                         handleChange={(format) => updateSetting('cbzFileFormat', format)}
-                        secondaryAction={
-                            <Tooltip title={getVariablesHelpText('cbzFileFormat')} arrow>
-                                <IconButton edge="end">
-                                    <InfoIcon />
-                                </IconButton>
-                            </Tooltip>
-                        }
                     />
                     <FormatVariablesList formatType="cbzFileFormat" />
                 </Box>
@@ -338,42 +300,15 @@ export const DownloadSettings = () => {
 
                 <SelectSetting
                     disabled={!downloadSettings?.useAnilist}
-                    settingTitle={t('anilist.settings.content_type.label')}
-                    dialogDescription={t('anilist.settings.content_type.description')}
-                    value={downloadSettings?.contentType || 'manga'}
-                    settingValue={t(`anilist.settings.content_type.options.${downloadSettings?.contentType || 'manga'}`)}
-                    handleUpdate={(contentType) => updateSetting('contentType', contentType as ContentType)}
-                    values={CONTENT_TYPES.map(type => [
-                        type,
-                        { text: `anilist.settings.content_type.options.${type}` }
-                    ])}
-                >
-                    {CONTENT_TYPES.map((type) => (
-                        <MenuItem key={type} value={type}>
-                            {t(`anilist.settings.content_type.options.${type}`)}
-                        </MenuItem>
-                    ))}
-                </SelectSetting>
-
-                <SelectSetting
-                    disabled={!downloadSettings?.useAnilist}
-                    settingTitle={t('anilist.settings.uncertain_action.label')}
+                    settingName={t('anilist.settings.uncertain_action.label')}
                     dialogDescription={t('anilist.settings.uncertain_action.description')}
                     value={downloadSettings?.anilistDefaultUncertainAction || 'skip'}
-                    settingValue={t(`anilist.settings.uncertain_action.options.${downloadSettings?.anilistDefaultUncertainAction || 'skip'}`)}
-                    handleUpdate={(action) => updateSetting('anilistDefaultUncertainAction', action as string)}
+                    handleChange={(action) => updateSetting('anilistDefaultUncertainAction', action as string)}
                     values={[
                         ['skip', { text: 'anilist.settings.uncertain_action.options.skip' }],
-                        ['use', { text: 'anilist.settings.uncertain_action.options.use' }]
+                        ['use', { text: 'anilist.settings.uncertain_action.options.use' }],
                     ]}
-                >
-                    <MenuItem value="skip">
-                        {t('anilist.settings.uncertain_action.options.skip')}
-                    </MenuItem>
-                    <MenuItem value="use">
-                        {t('anilist.settings.uncertain_action.options.use')}
-                    </MenuItem>
-                </SelectSetting>
+                />
             </List>
 
             <List
@@ -430,9 +365,9 @@ export const DownloadSettings = () => {
                         !downloadSettings.autoDownloadNewChaptersLimit
                             ? t('global.label.none')
                             : t('download.settings.download_ahead.label.value', {
-                                chapters: downloadSettings.autoDownloadNewChaptersLimit,
-                                count: downloadSettings.autoDownloadNewChaptersLimit,
-                            })
+                                  chapters: downloadSettings.autoDownloadNewChaptersLimit,
+                                  count: downloadSettings.autoDownloadNewChaptersLimit,
+                              })
                     }
                     defaultValue={0}
                     minValue={0}
