@@ -1,9 +1,4 @@
-import {FieldPolicy, FieldReadFunction, Reference, TypePolicies, TypePolicy} from '@apollo/client/cache';
-import {
-	GetChaptersMangaQuery, GetDownloadStatusQueryVariables, GetGlobalMetadataQueryVariables,
-	GetMangaScreenQueryVariables, GetSourceBrowseQueryVariables, GetUpdateStatusQueryVariables, GetWebuiUpdateStatusQueryVariables,
-} from "@/lib/graphql/generated/graphql.ts";
-import {FieldFunctionOptions} from "@apollo/client/cache/inmemory/policies";
+import { FieldPolicy, FieldReadFunction, TypePolicies, TypePolicy } from '@apollo/client/cache';
 export type AboutServerPayloadKeySpecifier = ('buildTime' | 'buildType' | 'discord' | 'github' | 'name' | 'revision' | 'version' | AboutServerPayloadKeySpecifier)[];
 export type AboutServerPayloadFieldPolicy = {
 	buildTime?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -552,8 +547,9 @@ export type PageInfoFieldPolicy = {
 	hasPreviousPage?: FieldPolicy<any> | FieldReadFunction<any>,
 	startCursor?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type PartialSettingsTypeKeySpecifier = ('autoDownloadAheadLimit' | 'autoDownloadIgnoreReUploads' | 'autoDownloadNewChapters' | 'autoDownloadNewChaptersLimit' | 'backupInterval' | 'backupPath' | 'backupTTL' | 'backupTime' | 'basicAuthEnabled' | 'basicAuthPassword' | 'basicAuthUsername' | 'debugLogsEnabled' | 'downloadAsCbz' | 'downloadsPath' | 'electronPath' | 'excludeCompleted' | 'excludeEntryWithUnreadChapters' | 'excludeNotStarted' | 'excludeUnreadChapters' | 'extensionRepos' | 'flareSolverrAsResponseFallback' | 'flareSolverrEnabled' | 'flareSolverrSessionName' | 'flareSolverrSessionTtl' | 'flareSolverrTimeout' | 'flareSolverrUrl' | 'globalUpdateInterval' | 'gqlDebugLogsEnabled' | 'initialOpenInBrowserEnabled' | 'ip' | 'localSourcePath' | 'maxLogFileSize' | 'maxLogFiles' | 'maxLogFolderSize' | 'maxSourcesInParallel' | 'port' | 'socksProxyEnabled' | 'socksProxyHost' | 'socksProxyPassword' | 'socksProxyPort' | 'socksProxyUsername' | 'socksProxyVersion' | 'systemTrayEnabled' | 'updateMangas' | 'webUIChannel' | 'webUIFlavor' | 'webUIInterface' | 'webUIUpdateCheckInterval' | PartialSettingsTypeKeySpecifier)[];
+export type PartialSettingsTypeKeySpecifier = ('anilistDefaultUncertainAction' | 'autoDownloadAheadLimit' | 'autoDownloadIgnoreReUploads' | 'autoDownloadNewChapters' | 'autoDownloadNewChaptersLimit' | 'backupInterval' | 'backupPath' | 'backupTTL' | 'backupTime' | 'basicAuthEnabled' | 'basicAuthPassword' | 'basicAuthUsername' | 'cbzFileFormat' | 'chapterFolderFormat' | 'contentType' | 'debugLogsEnabled' | 'downloadAsCbz' | 'downloadsPath' | 'electronPath' | 'excludeCompleted' | 'excludeEntryWithUnreadChapters' | 'excludeNotStarted' | 'excludeUnreadChapters' | 'extensionRepos' | 'flareSolverrAsResponseFallback' | 'flareSolverrEnabled' | 'flareSolverrSessionName' | 'flareSolverrSessionTtl' | 'flareSolverrTimeout' | 'flareSolverrUrl' | 'globalUpdateInterval' | 'gqlDebugLogsEnabled' | 'initialOpenInBrowserEnabled' | 'ip' | 'localSourcePath' | 'mangaFolderFormat' | 'maxLogFileSize' | 'maxLogFiles' | 'maxLogFolderSize' | 'maxSourcesInParallel' | 'port' | 'socksProxyEnabled' | 'socksProxyHost' | 'socksProxyPassword' | 'socksProxyPort' | 'socksProxyUsername' | 'socksProxyVersion' | 'systemTrayEnabled' | 'updateMangas' | 'useAnilist' | 'webUIChannel' | 'webUIFlavor' | 'webUIInterface' | 'webUIUpdateCheckInterval' | PartialSettingsTypeKeySpecifier)[];
 export type PartialSettingsTypeFieldPolicy = {
+	anilistDefaultUncertainAction?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadAheadLimit?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadIgnoreReUploads?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadNewChapters?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -565,6 +561,9 @@ export type PartialSettingsTypeFieldPolicy = {
 	basicAuthEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	basicAuthPassword?: FieldPolicy<any> | FieldReadFunction<any>,
 	basicAuthUsername?: FieldPolicy<any> | FieldReadFunction<any>,
+	cbzFileFormat?: FieldPolicy<any> | FieldReadFunction<any>,
+	chapterFolderFormat?: FieldPolicy<any> | FieldReadFunction<any>,
+	contentType?: FieldPolicy<any> | FieldReadFunction<any>,
 	debugLogsEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	downloadAsCbz?: FieldPolicy<any> | FieldReadFunction<any>,
 	downloadsPath?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -585,6 +584,7 @@ export type PartialSettingsTypeFieldPolicy = {
 	initialOpenInBrowserEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	ip?: FieldPolicy<any> | FieldReadFunction<any>,
 	localSourcePath?: FieldPolicy<any> | FieldReadFunction<any>,
+	mangaFolderFormat?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFileSize?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFiles?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFolderSize?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -598,6 +598,7 @@ export type PartialSettingsTypeFieldPolicy = {
 	socksProxyVersion?: FieldPolicy<any> | FieldReadFunction<any>,
 	systemTrayEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	updateMangas?: FieldPolicy<any> | FieldReadFunction<any>,
+	useAnilist?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIChannel?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIFlavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIInterface?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -610,23 +611,23 @@ export type QueryFieldPolicy = {
 	categories?: FieldPolicy<any> | FieldReadFunction<any>,
 	category?: FieldPolicy<any> | FieldReadFunction<any>,
 	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
-	chapters?: FieldPolicy<GetChaptersMangaQuery['chapters']> | FieldReadFunction<GetChaptersMangaQuery['chapters']>,
+	chapters?: FieldPolicy<any> | FieldReadFunction<any>,
 	checkForServerUpdates?: FieldPolicy<any> | FieldReadFunction<any>,
 	checkForWebUIUpdate?: FieldPolicy<any> | FieldReadFunction<any>,
-	downloadStatus?: FieldPolicy<Reference, Reference, Reference, FieldFunctionOptions<GetDownloadStatusQueryVariables>> | FieldReadFunction<Reference, Reference, FieldFunctionOptions<GetDownloadStatusQueryVariables>>,
+	downloadStatus?: FieldPolicy<any> | FieldReadFunction<any>,
 	extension?: FieldPolicy<any> | FieldReadFunction<any>,
 	extensions?: FieldPolicy<any> | FieldReadFunction<any>,
-	getWebUIUpdateStatus?: FieldPolicy<Reference, Reference, Reference, FieldFunctionOptions<GetWebuiUpdateStatusQueryVariables>> | FieldReadFunction<Reference, Reference, FieldFunctionOptions<GetWebuiUpdateStatusQueryVariables>>,
+	getWebUIUpdateStatus?: FieldPolicy<any> | FieldReadFunction<any>,
 	lastUpdateTimestamp?: FieldPolicy<any> | FieldReadFunction<any>,
-	libraryUpdateStatus?: FieldPolicy<Reference, Reference, Reference, FieldFunctionOptions<GetUpdateStatusQueryVariables>> | FieldReadFunction<Reference, Reference, FieldFunctionOptions<GetUpdateStatusQueryVariables>>,
-	manga?: FieldPolicy<Reference, Reference, Reference, FieldFunctionOptions<GetMangaScreenQueryVariables>> | FieldReadFunction<Reference, Reference, FieldFunctionOptions<GetMangaScreenQueryVariables>>,
+	libraryUpdateStatus?: FieldPolicy<any> | FieldReadFunction<any>,
+	manga?: FieldPolicy<any> | FieldReadFunction<any>,
 	mangas?: FieldPolicy<any> | FieldReadFunction<any>,
-	meta?: FieldPolicy<Reference, Reference, Reference, FieldFunctionOptions<GetGlobalMetadataQueryVariables>> | FieldReadFunction<Reference, Reference, FieldFunctionOptions<GetGlobalMetadataQueryVariables>>,
+	meta?: FieldPolicy<any> | FieldReadFunction<any>,
 	metas?: FieldPolicy<any> | FieldReadFunction<any>,
 	restoreStatus?: FieldPolicy<any> | FieldReadFunction<any>,
 	searchTracker?: FieldPolicy<any> | FieldReadFunction<any>,
 	settings?: FieldPolicy<any> | FieldReadFunction<any>,
-	source?: FieldPolicy<Reference, Reference, Reference, FieldFunctionOptions<GetSourceBrowseQueryVariables>> | FieldReadFunction<Reference, Reference, FieldFunctionOptions<GetSourceBrowseQueryVariables>>,
+	source?: FieldPolicy<any> | FieldReadFunction<any>,
 	sources?: FieldPolicy<any> | FieldReadFunction<any>,
 	trackRecord?: FieldPolicy<any> | FieldReadFunction<any>,
 	trackRecords?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -695,8 +696,9 @@ export type SetSourceMetaPayloadFieldPolicy = {
 	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>,
 	meta?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type SettingsKeySpecifier = ('autoDownloadAheadLimit' | 'autoDownloadIgnoreReUploads' | 'autoDownloadNewChapters' | 'autoDownloadNewChaptersLimit' | 'backupInterval' | 'backupPath' | 'backupTTL' | 'backupTime' | 'basicAuthEnabled' | 'basicAuthPassword' | 'basicAuthUsername' | 'debugLogsEnabled' | 'downloadAsCbz' | 'downloadsPath' | 'electronPath' | 'excludeCompleted' | 'excludeEntryWithUnreadChapters' | 'excludeNotStarted' | 'excludeUnreadChapters' | 'extensionRepos' | 'flareSolverrAsResponseFallback' | 'flareSolverrEnabled' | 'flareSolverrSessionName' | 'flareSolverrSessionTtl' | 'flareSolverrTimeout' | 'flareSolverrUrl' | 'globalUpdateInterval' | 'gqlDebugLogsEnabled' | 'initialOpenInBrowserEnabled' | 'ip' | 'localSourcePath' | 'maxLogFileSize' | 'maxLogFiles' | 'maxLogFolderSize' | 'maxSourcesInParallel' | 'port' | 'socksProxyEnabled' | 'socksProxyHost' | 'socksProxyPassword' | 'socksProxyPort' | 'socksProxyUsername' | 'socksProxyVersion' | 'systemTrayEnabled' | 'updateMangas' | 'webUIChannel' | 'webUIFlavor' | 'webUIInterface' | 'webUIUpdateCheckInterval' | SettingsKeySpecifier)[];
+export type SettingsKeySpecifier = ('anilistDefaultUncertainAction' | 'autoDownloadAheadLimit' | 'autoDownloadIgnoreReUploads' | 'autoDownloadNewChapters' | 'autoDownloadNewChaptersLimit' | 'backupInterval' | 'backupPath' | 'backupTTL' | 'backupTime' | 'basicAuthEnabled' | 'basicAuthPassword' | 'basicAuthUsername' | 'cbzFileFormat' | 'chapterFolderFormat' | 'contentType' | 'debugLogsEnabled' | 'downloadAsCbz' | 'downloadsPath' | 'electronPath' | 'excludeCompleted' | 'excludeEntryWithUnreadChapters' | 'excludeNotStarted' | 'excludeUnreadChapters' | 'extensionRepos' | 'flareSolverrAsResponseFallback' | 'flareSolverrEnabled' | 'flareSolverrSessionName' | 'flareSolverrSessionTtl' | 'flareSolverrTimeout' | 'flareSolverrUrl' | 'globalUpdateInterval' | 'gqlDebugLogsEnabled' | 'initialOpenInBrowserEnabled' | 'ip' | 'localSourcePath' | 'mangaFolderFormat' | 'maxLogFileSize' | 'maxLogFiles' | 'maxLogFolderSize' | 'maxSourcesInParallel' | 'port' | 'socksProxyEnabled' | 'socksProxyHost' | 'socksProxyPassword' | 'socksProxyPort' | 'socksProxyUsername' | 'socksProxyVersion' | 'systemTrayEnabled' | 'updateMangas' | 'useAnilist' | 'webUIChannel' | 'webUIFlavor' | 'webUIInterface' | 'webUIUpdateCheckInterval' | SettingsKeySpecifier)[];
 export type SettingsFieldPolicy = {
+	anilistDefaultUncertainAction?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadAheadLimit?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadIgnoreReUploads?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadNewChapters?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -708,6 +710,9 @@ export type SettingsFieldPolicy = {
 	basicAuthEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	basicAuthPassword?: FieldPolicy<any> | FieldReadFunction<any>,
 	basicAuthUsername?: FieldPolicy<any> | FieldReadFunction<any>,
+	cbzFileFormat?: FieldPolicy<any> | FieldReadFunction<any>,
+	chapterFolderFormat?: FieldPolicy<any> | FieldReadFunction<any>,
+	contentType?: FieldPolicy<any> | FieldReadFunction<any>,
 	debugLogsEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	downloadAsCbz?: FieldPolicy<any> | FieldReadFunction<any>,
 	downloadsPath?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -728,6 +733,7 @@ export type SettingsFieldPolicy = {
 	initialOpenInBrowserEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	ip?: FieldPolicy<any> | FieldReadFunction<any>,
 	localSourcePath?: FieldPolicy<any> | FieldReadFunction<any>,
+	mangaFolderFormat?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFileSize?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFiles?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFolderSize?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -741,13 +747,15 @@ export type SettingsFieldPolicy = {
 	socksProxyVersion?: FieldPolicy<any> | FieldReadFunction<any>,
 	systemTrayEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	updateMangas?: FieldPolicy<any> | FieldReadFunction<any>,
+	useAnilist?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIChannel?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIFlavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIInterface?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIUpdateCheckInterval?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type SettingsTypeKeySpecifier = ('autoDownloadAheadLimit' | 'autoDownloadIgnoreReUploads' | 'autoDownloadNewChapters' | 'autoDownloadNewChaptersLimit' | 'backupInterval' | 'backupPath' | 'backupTTL' | 'backupTime' | 'basicAuthEnabled' | 'basicAuthPassword' | 'basicAuthUsername' | 'debugLogsEnabled' | 'downloadAsCbz' | 'downloadsPath' | 'electronPath' | 'excludeCompleted' | 'excludeEntryWithUnreadChapters' | 'excludeNotStarted' | 'excludeUnreadChapters' | 'extensionRepos' | 'flareSolverrAsResponseFallback' | 'flareSolverrEnabled' | 'flareSolverrSessionName' | 'flareSolverrSessionTtl' | 'flareSolverrTimeout' | 'flareSolverrUrl' | 'globalUpdateInterval' | 'gqlDebugLogsEnabled' | 'initialOpenInBrowserEnabled' | 'ip' | 'localSourcePath' | 'maxLogFileSize' | 'maxLogFiles' | 'maxLogFolderSize' | 'maxSourcesInParallel' | 'port' | 'socksProxyEnabled' | 'socksProxyHost' | 'socksProxyPassword' | 'socksProxyPort' | 'socksProxyUsername' | 'socksProxyVersion' | 'systemTrayEnabled' | 'updateMangas' | 'webUIChannel' | 'webUIFlavor' | 'webUIInterface' | 'webUIUpdateCheckInterval' | SettingsTypeKeySpecifier)[];
+export type SettingsTypeKeySpecifier = ('anilistDefaultUncertainAction' | 'autoDownloadAheadLimit' | 'autoDownloadIgnoreReUploads' | 'autoDownloadNewChapters' | 'autoDownloadNewChaptersLimit' | 'backupInterval' | 'backupPath' | 'backupTTL' | 'backupTime' | 'basicAuthEnabled' | 'basicAuthPassword' | 'basicAuthUsername' | 'cbzFileFormat' | 'chapterFolderFormat' | 'contentType' | 'debugLogsEnabled' | 'downloadAsCbz' | 'downloadsPath' | 'electronPath' | 'excludeCompleted' | 'excludeEntryWithUnreadChapters' | 'excludeNotStarted' | 'excludeUnreadChapters' | 'extensionRepos' | 'flareSolverrAsResponseFallback' | 'flareSolverrEnabled' | 'flareSolverrSessionName' | 'flareSolverrSessionTtl' | 'flareSolverrTimeout' | 'flareSolverrUrl' | 'globalUpdateInterval' | 'gqlDebugLogsEnabled' | 'initialOpenInBrowserEnabled' | 'ip' | 'localSourcePath' | 'mangaFolderFormat' | 'maxLogFileSize' | 'maxLogFiles' | 'maxLogFolderSize' | 'maxSourcesInParallel' | 'port' | 'socksProxyEnabled' | 'socksProxyHost' | 'socksProxyPassword' | 'socksProxyPort' | 'socksProxyUsername' | 'socksProxyVersion' | 'systemTrayEnabled' | 'updateMangas' | 'useAnilist' | 'webUIChannel' | 'webUIFlavor' | 'webUIInterface' | 'webUIUpdateCheckInterval' | SettingsTypeKeySpecifier)[];
 export type SettingsTypeFieldPolicy = {
+	anilistDefaultUncertainAction?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadAheadLimit?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadIgnoreReUploads?: FieldPolicy<any> | FieldReadFunction<any>,
 	autoDownloadNewChapters?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -759,6 +767,9 @@ export type SettingsTypeFieldPolicy = {
 	basicAuthEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	basicAuthPassword?: FieldPolicy<any> | FieldReadFunction<any>,
 	basicAuthUsername?: FieldPolicy<any> | FieldReadFunction<any>,
+	cbzFileFormat?: FieldPolicy<any> | FieldReadFunction<any>,
+	chapterFolderFormat?: FieldPolicy<any> | FieldReadFunction<any>,
+	contentType?: FieldPolicy<any> | FieldReadFunction<any>,
 	debugLogsEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	downloadAsCbz?: FieldPolicy<any> | FieldReadFunction<any>,
 	downloadsPath?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -779,6 +790,7 @@ export type SettingsTypeFieldPolicy = {
 	initialOpenInBrowserEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	ip?: FieldPolicy<any> | FieldReadFunction<any>,
 	localSourcePath?: FieldPolicy<any> | FieldReadFunction<any>,
+	mangaFolderFormat?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFileSize?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFiles?: FieldPolicy<any> | FieldReadFunction<any>,
 	maxLogFolderSize?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -792,6 +804,7 @@ export type SettingsTypeFieldPolicy = {
 	socksProxyVersion?: FieldPolicy<any> | FieldReadFunction<any>,
 	systemTrayEnabled?: FieldPolicy<any> | FieldReadFunction<any>,
 	updateMangas?: FieldPolicy<any> | FieldReadFunction<any>,
+	useAnilist?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIChannel?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIFlavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	webUIInterface?: FieldPolicy<any> | FieldReadFunction<any>,

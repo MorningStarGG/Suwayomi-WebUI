@@ -9,3 +9,7 @@ build/*
 tools/scripts/tokens.json
 
 src/lib/graphql/schema.json
+package-lock.json
+package.json
+yarn.lock
+package.json
