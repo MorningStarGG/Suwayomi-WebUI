@@ -43,31 +43,28 @@ import { SelectSetting } from '@/modules/core/components/settings/SelectSetting.
 // Format variables info
 const FORMAT_VARIABLES_INFO = {
     mangaFolderFormat: [
-        { variable: '{title}', description: 'Manga title' },
+        { variable: '{manga_title}', description: 'Manga title' },
         { variable: '{source}', description: 'Source name' },
     ],
     chapterFolderFormat: [
-        { variable: '{title}', description: 'Chapter title' },
+        { variable: '{manga_title}', description: 'Manga title' },
         { variable: '{number}', description: 'Chapter number' },
         { variable: '{number_padded}', description: 'Chapter number with 2-digit padding' },
         { variable: '{number_padded3}', description: 'Chapter number with 3-digit padding' },
-        { variable: '{chapter}', description: 'Chapter name' },
         { variable: '{volume}', description: 'Volume number' },
         { variable: '{volume_prefix}', description: 'Volume prefix (e.g., "Vol.1 ")' },
-        { variable: '{name}', description: 'Chapter name' },
+        { variable: '{chapter_name}', description: 'Chapter name' },
         { variable: '{title_suffix}', description: 'Title suffix (e.g., ": The Battle")' },
         { variable: '{scanlator}', description: 'Scanlator name' },
     ],
     cbzFileFormat: [
         { variable: '{manga_title}', description: 'Manga title' },
-        { variable: '{title}', description: 'Chapter title' },
         { variable: '{number}', description: 'Chapter number' },
         { variable: '{number_padded}', description: 'Chapter number with 2-digit padding' },
         { variable: '{number_padded3}', description: 'Chapter number with 3-digit padding' },
-        { variable: '{chapter}', description: 'Chapter name' },
         { variable: '{volume}', description: 'Volume number' },
         { variable: '{volume_prefix}', description: 'Volume prefix (e.g., "Vol.1 ")' },
-        { variable: '{name}', description: 'Chapter name' },
+        { variable: '{chapter_name}', description: 'Chapter name' },
         { variable: '{title_suffix}', description: 'Title suffix (e.g., ": The Battle")' },
         { variable: '{scanlator}', description: 'Scanlator name' },
     ],
@@ -252,8 +249,8 @@ export const DownloadSettings = () => {
                     <TextSetting
                         settingName={t('format.settings.chapter_folder_format.label.title')}
                         dialogDescription={t('format.settings.chapter_folder_format.label.description')}
-                        value={downloadSettings?.chapterFolderFormat || '{scanlator}_{name}'}
-                        settingDescription={downloadSettings?.chapterFolderFormat || '{scanlator}_{name}'}
+                        value={downloadSettings?.chapterFolderFormat || '{scanlator}_{chapter_name}'}
+                        settingDescription={downloadSettings?.chapterFolderFormat || '{scanlator}_{chapter_name}'}
                         handleChange={(format) => updateSetting('chapterFolderFormat', format)}
                     />
                     <FormatVariablesList formatType="chapterFolderFormat" />
@@ -263,8 +260,10 @@ export const DownloadSettings = () => {
                     <TextSetting
                         settingName={t('format.settings.cbz_file_format.label.title')}
                         dialogDescription={t('format.settings.cbz_file_format.label.description')}
-                        value={downloadSettings?.cbzFileFormat || '{manga_title} - [{scanlator}] {name}'}
-                        settingDescription={downloadSettings?.cbzFileFormat || '{manga_title} - [{scanlator}] {name}'}
+                        value={downloadSettings?.cbzFileFormat || '{manga_title} - [{scanlator}] {chapter_name}'}
+                        settingDescription={
+                            downloadSettings?.cbzFileFormat || '{manga_title} - [{scanlator}] {chapter_name}'
+                        }
                         handleChange={(format) => updateSetting('cbzFileFormat', format)}
                     />
                     <FormatVariablesList formatType="cbzFileFormat" />

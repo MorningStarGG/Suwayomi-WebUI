@@ -1585,19 +1585,19 @@
       "manga_folder_format": {
         "label": {
           "title": "Manga Folder Format",
-          "description": "Format pattern for manga folders. Available variables: {title} - Manga title, {source} - Source name"
+          "description": "Format pattern for manga folders. Available variables: {manga_title} - Manga title, {source} - Source name"
         }
       },
       "chapter_folder_format": {
         "label": {
           "title": "Chapter Folder Format",
-          "description": "Format pattern for chapter folders. Available variables: {title} - Chapter title, {number} - Chapter number, {number_padded} - Chapter number with 2-digit padding, {number_padded3} - Chapter number with 3-digit padding, {chapter} - Chapter name, {volume} - Volume number, {volume_prefix} - Volume prefix (e.g., \"Vol.1 \"), {name} - Chapter name, {title_suffix} - Title suffix (e.g., \": The Battle\"), {scanlator} - Scanlator name"
+          "description": "Format pattern for chapter folders. Available variables: {manga_title} - Manga title, {number} - Chapter number, {number_padded} - Chapter number with 2-digit padding, {number_padded3} - Chapter number with 3-digit padding, {volume} - Volume number, {volume_prefix} - Volume prefix (e.g., \"Vol.1 \"), {chapter_name} - Chapter name, {title_suffix} - Title suffix (e.g., \": The Battle\"), {scanlator} - Scanlator name"
         }
       },
       "cbz_file_format": {
         "label": {
           "title": "CBZ File Format",
-          "description": "Format pattern for CBZ archives. Available variables: {manga_title} - Manga title, plus all chapter variables: {title}, {number}, {number_padded}, {number_padded3}, {chapter}, {volume}, {volume_prefix}, {name}, {title_suffix}, {scanlator}"
+          "description": "Format pattern for CBZ archives. Available variables: {manga_title} - Manga title, {number} - Chapter number, {number_padded} - Chapter number with 2-digit padding, {number_padded3} - Chapter number with 3-digit padding, {volume} - Volume number, {volume_prefix} - Volume prefix (e.g., \"Vol.1 \"), {chapter_name} - Chapter name, {title_suffix} - Title suffix (e.g., \": The Battle\"), {scanlator} - Scanlator name"
         }
       }
     }
