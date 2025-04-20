@@ -343,6 +343,10 @@ export const DownloadSettings = () => {
                     value={downloadSettings?.contentType || 'manga'}
                     settingValue={t(`anilist.settings.content_type.options.${downloadSettings?.contentType || 'manga'}`)}
                     handleUpdate={(contentType) => updateSetting('contentType', contentType as ContentType)}
+                    values={CONTENT_TYPES.map(type => [
+                        type,
+                        { text: `anilist.settings.content_type.options.${type}` }
+                    ])}
                 >
                     {CONTENT_TYPES.map((type) => (
                         <MenuItem key={type} value={type}>
@@ -358,6 +362,10 @@ export const DownloadSettings = () => {
                     value={downloadSettings?.anilistDefaultUncertainAction || 'skip'}
                     settingValue={t(`anilist.settings.uncertain_action.options.${downloadSettings?.anilistDefaultUncertainAction || 'skip'}`)}
                     handleUpdate={(action) => updateSetting('anilistDefaultUncertainAction', action as string)}
+                    values={[
+                        ['skip', { text: 'anilist.settings.uncertain_action.options.skip' }],
+                        ['use', { text: 'anilist.settings.uncertain_action.options.use' }]
+                    ]}
                 >
                     <MenuItem value="skip">
                         {t('anilist.settings.uncertain_action.options.skip')}
