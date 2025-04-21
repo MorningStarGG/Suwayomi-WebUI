@@ -54,18 +54,18 @@ const typePolicies: StrictTypedTypePolicies = {
         keyFields: [],
         fields: {
             mangaFolderFormat: {
-                merge(existing, incoming) {
-                    return incoming ?? existing;
+                merge(_, incoming) {
+                    return incoming;
                 },
             },
             chapterFolderFormat: {
-                merge(existing, incoming) {
-                    return incoming ?? existing;
+                merge(_, incoming) {
+                    return incoming;
                 },
             },
             cbzFileFormat: {
-                merge(existing, incoming) {
-                    return incoming ?? existing;
+                merge(_, incoming) {
+                    return incoming;
                 },
             },
         },
