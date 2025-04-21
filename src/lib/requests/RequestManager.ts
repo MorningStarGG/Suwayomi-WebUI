@@ -3029,20 +3029,29 @@ export class RequestManager {
     ): AbortableApolloUseMutationResponse<UpdateServerSettingsMutation, UpdateServerSettingsMutationVariables> {
         const [mutate, result] = this.doRequest(GQLMethod.USE_MUTATION, UPDATE_SERVER_SETTINGS, undefined, options);
 
-        const wrappedMutate = async (mutateOptions: Parameters<typeof mutate>[0]) =>
-            mutate({
-                optimisticResponse: {
-                    __typename: 'Mutation',
-                    setSettings: {
-                        __typename: 'SetSettingsPayload',
-                        settings: {
-                            __typename: 'SettingsType',
-                            ...(mutateOptions?.variables?.input.settings ?? {}),
-                        } as SettingsType,
-                    },
-                },
+        const wrappedMutate = async (mutateOptions: Parameters<typeof mutate>[0]) => {
+            // Get current settings from cache to build a complete optimistic response
+            const currentSettings = this.graphQLClient.client.readQuery<GetServerSettingsQuery>({
+                query: GET_SERVER_SETTINGS,
+            })?.settings;
+
+            return mutate({
+                optimisticResponse: currentSettings
+                    ? {
+                          __typename: 'Mutation',
+                          setSettings: {
+                              __typename: 'SetSettingsPayload',
+                              settings: {
+                                  __typename: 'SettingsType',
+                                  ...currentSettings, // Include all current settings
+                                  ...(mutateOptions?.variables?.input.settings ?? {}), // Override with new values
+                              } as SettingsType,
+                          },
+                      }
+                    : undefined, // If we can't get current settings, don't use optimistic response
                 ...mutateOptions,
             });
+        };
 
         return [wrappedMutate, result];
     }

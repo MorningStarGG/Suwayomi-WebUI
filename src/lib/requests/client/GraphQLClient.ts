@@ -50,36 +50,7 @@ const typePolicies: StrictTypedTypePolicies = {
     AboutWebUI: { keyFields: [] },
     WebUIUpdateInfo: { keyFields: [] },
     WebUIUpdateCheck: { keyFields: [] },
-    SettingsType: {
-        keyFields: [],
-        fields: {
-            mangaFolderFormat: {
-                merge(existing, incoming) {
-                    return incoming !== undefined ? incoming : existing;
-                },
-            },
-            chapterFolderFormat: {
-                merge(existing, incoming) {
-                    return incoming !== undefined ? incoming : existing;
-                },
-            },
-            cbzFileFormat: {
-                merge(existing, incoming) {
-                    return incoming !== undefined ? incoming : existing;
-                },
-            },
-            useAnilist: {
-                merge(existing, incoming) {
-                    return incoming !== undefined ? incoming : existing;
-                },
-            },
-            anilistDefaultUncertainAction: {
-                merge(existing, incoming) {
-                    return incoming !== undefined ? incoming : existing;
-                },
-            },
-        },
-    },
+    SettingsType: { keyFields: [] },
     DownloadStatus: {
         keyFields: [],
         fields: {
