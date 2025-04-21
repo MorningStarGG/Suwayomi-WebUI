@@ -54,18 +54,28 @@ const typePolicies: StrictTypedTypePolicies = {
         keyFields: [],
         fields: {
             mangaFolderFormat: {
-                merge(_, incoming) {
-                    return incoming;
+                merge(existing, incoming) {
+                    return incoming !== undefined ? incoming : existing;
                 },
             },
             chapterFolderFormat: {
-                merge(_, incoming) {
-                    return incoming;
+                merge(existing, incoming) {
+                    return incoming !== undefined ? incoming : existing;
                 },
             },
             cbzFileFormat: {
-                merge(_, incoming) {
-                    return incoming;
+                merge(existing, incoming) {
+                    return incoming !== undefined ? incoming : existing;
+                },
+            },
+            useAnilist: {
+                merge(existing, incoming) {
+                    return incoming !== undefined ? incoming : existing;
+                },
+            },
+            anilistDefaultUncertainAction: {
+                merge(existing, incoming) {
+                    return incoming !== undefined ? incoming : existing;
                 },
             },
         },
