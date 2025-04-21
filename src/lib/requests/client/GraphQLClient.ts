@@ -50,7 +50,26 @@ const typePolicies: StrictTypedTypePolicies = {
     AboutWebUI: { keyFields: [] },
     WebUIUpdateInfo: { keyFields: [] },
     WebUIUpdateCheck: { keyFields: [] },
-    SettingsType: { keyFields: [] },
+    SettingsType: {
+        keyFields: [],
+        fields: {
+            mangaFolderFormat: {
+                merge(existing, incoming) {
+                    return incoming ?? existing;
+                },
+            },
+            chapterFolderFormat: {
+                merge(existing, incoming) {
+                    return incoming ?? existing;
+                },
+            },
+            cbzFileFormat: {
+                merge(existing, incoming) {
+                    return incoming ?? existing;
+                },
+            },
+        },
+    },
     DownloadStatus: {
         keyFields: [],
         fields: {

@@ -12,7 +12,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Switch from '@mui/material/Switch';
-import ListSubheader from '@mui/material/ListSubheader';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -220,13 +219,7 @@ export const DownloadSettings = () => {
             </ListItem>
 
             {/* Format Settings Section */}
-            <List
-                subheader={
-                    <ListSubheader component="div" id="download-settings-format">
-                        {t('format.settings.title')}
-                    </ListSubheader>
-                }
-            >
+            <List>
                 <ListItem>
                     <ListItemText
                         primary={t('format.settings.explanation')}
@@ -238,8 +231,8 @@ export const DownloadSettings = () => {
                     <TextSetting
                         settingName={t('format.settings.manga_folder_format.label.title')}
                         dialogDescription={t('format.settings.manga_folder_format.label.description')}
-                        value={downloadSettings?.mangaFolderFormat || '{source}/{title}'}
-                        settingDescription={downloadSettings?.mangaFolderFormat || '{source}/{title}'}
+                        value={downloadSettings?.mangaFolderFormat || '{source}/{manga_title}'}
+                        settingDescription={downloadSettings?.mangaFolderFormat || '{source}/{manga_title}'}
                         handleChange={(format) => updateSetting('mangaFolderFormat', format)}
                     />
                     <FormatVariablesList formatType="mangaFolderFormat" />
@@ -271,13 +264,7 @@ export const DownloadSettings = () => {
             </List>
 
             {/* AniList Integration Section */}
-            <List
-                subheader={
-                    <ListSubheader component="div" id="download-settings-anilist">
-                        {t('anilist.settings.title')}
-                    </ListSubheader>
-                }
-            >
+            <List>
                 <ListItem>
                     <ListItemText
                         primary={t('anilist.settings.explanation')}
@@ -310,13 +297,7 @@ export const DownloadSettings = () => {
                 />
             </List>
 
-            <List
-                subheader={
-                    <ListSubheader component="div" id="download-settings-auto-delete-downloads">
-                        {t('download.settings.delete_chapters.title')}
-                    </ListSubheader>
-                }
-            >
+            <List>
                 <ListItem>
                     <ListItemText primary={t('download.settings.delete_chapters.label.manually_marked_as_read')} />
                     <Switch
@@ -340,13 +321,7 @@ export const DownloadSettings = () => {
                     />
                 </ListItem>
             </List>
-            <List
-                subheader={
-                    <ListSubheader component="div" id="download-settings-auto-download">
-                        {t('download.settings.auto_download.title')}
-                    </ListSubheader>
-                }
-            >
+            <List>
                 <ListItem>
                     <ListItemText primary={t('download.settings.auto_download.label.new_chapters')} />
                     <Switch
@@ -401,13 +376,7 @@ export const DownloadSettings = () => {
                     dialogText={t('download.settings.auto_download.categories.label.include_in_download')}
                 />
             </List>
-            <List
-                subheader={
-                    <ListSubheader component="div" id="download-settings-download-ahead">
-                        {t('download.settings.download_ahead.title')}
-                    </ListSubheader>
-                }
-            >
+            <List>
                 <DownloadAheadSetting downloadAheadLimit={metadataSettings.downloadAheadLimit} />
             </List>
         </List>
